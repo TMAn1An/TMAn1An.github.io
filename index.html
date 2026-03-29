@@ -1,109 +1,158 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Mainul Islam | Portfolio</title>
+    <title>Moyeen | Full-Stack & AI Researcher</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        .gradient-text {
-            background: linear-gradient(to right, #0b6fa3, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(17, 24, 39, 1) 70%);
+        }
+
+        .glow-image {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans leading-normal tracking-normal">
+<body class="bg-gray-900 text-white selection:bg-blue-500 selection:text-white">
 
-    <nav class="fixed w-full z-10 top-0 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold gradient-text">Moyeen.</a>
-            <div class="space-x-6 hidden md:flex">
+    <nav class="fixed w-full z-50 top-0 glass px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <span class="text-2xl font-extrabold tracking-tighter text-blue-500">M. MOYEEN</span>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
                 <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#research" class="hover:text-blue-400 transition">Research</a>
                 <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+                <a href="#research" class="hover:text-blue-400 transition">Research</a>
                 <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 px-4">
-        <div class="max-w-5xl mx-auto text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Md Mainul Islam</h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-8">Full-stack Developer | AI Researcher | Competitive Programmer</p>
-            <div class="flex justify-center space-x-4">
-                <a href="https://github.com/TMAn1An" target="_blank" class="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition"><i class="fab fa-github fa-lg"></i></a>
-                <a href="https://www.linkedin.com/in/moyeenulislammollik" target="_blank" class="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition"><i class="fab fa-linkedin fa-lg"></i></a>
-                <a href="https://codeforces.com/profile/TM_An1An" target="_blank" class="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition"><i class="fas fa-code fa-lg"></i></a>
+    <section class="min-h-screen flex items-center justify-center pt-20 hero-gradient px-4">
+        <div class="max-w-4xl text-center" data-aos="zoom-out" data-aos-duration="1500">
+            <div class="relative w-40 h-40 mx-auto mb-10">
+                <img src="photo.jpg" alt="Md Mainul Islam" class="w-full h-full object-cover rounded-2xl glow-image border-2 border-blue-500/30">
+                <div class="absolute -bottom-2 -right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-gray-900"></div>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mainul Islam</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 font-light mb-10">
+                I am a <span id="typed" class="text-blue-400 font-semibold"></span>
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full font-bold transition shadow-lg shadow-blue-600/20">View My Work</a>
+                <a href="mailto:this.mainul@gmail.com" class="px-8 py-3 glass hover:bg-gray-800 rounded-full font-bold transition">Get In Touch</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-16 bg-gray-800/50">
-        <div class="max-w-5xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center">
-            <div class="p-6 bg-gray-900 rounded-xl border border-gray-700">
-                <i class="fas fa-trophy text-blue-500 text-3xl mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Award Winner</h3>
-                <p class="text-gray-400">Winner of SympSIST 2025 & Level Up with AI Workshop Fest.</p>
-            </div>
-            <div class="p-6 bg-gray-900 rounded-xl border border-gray-700">
-                <i class="fas fa-university text-blue-500 text-3xl mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Millennium Fellow</h3>
-                <p class="text-gray-400">Class of 2026 participant, focusing on social impact projects.</p>
-            </div>
-            <div class="p-6 bg-gray-900 rounded-xl border border-gray-700">
-                <i class="fas fa-terminal text-blue-500 text-3xl mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Linux Enthusiast</h3>
-                <p class="text-gray-400">Expertise in Ubuntu, Kali, and Fedora dual-boot systems.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="research" class="py-20 px-4">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-500 pl-4 uppercase tracking-wider">Research & Thesis</h2>
-            <div class="space-y-8">
-                <div class="p-6 bg-gray-800 rounded-lg">
-                    <h3 class="text-xl font-bold text-blue-400">V2S-AI: Vision-to-Scent Synthesis</h3>
-                    <p class="mt-2 text-gray-300">একটি সিস্টেম যা কৃত্রিম বুদ্ধিমত্তা ব্যবহার করে ডিজিটাল ইমেজ থেকে সংশ্লিষ্ট ঘ্রাণ (scent) তৈরি করতে সক্ষম।</p>
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-3xl card-hover" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-blue-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-microchip text-blue-500 text-2xl"></i>
                 </div>
-                <div class="p-6 bg-gray-800 rounded-lg">
-                    <h3 class="text-xl font-bold text-blue-400">Privacy-Preserving Computer Vision for Edge Devices</h3>
-                    <p class="mt-2 text-gray-300">আপনার বর্তমান থিসিস প্রজেক্ট, যা এজ ডিভাইসে ইউজারের গোপনীয়তা বজায় রেখে কম্পিউটার ভিশন অ্যালগরিদম রান করার ওপর ফোকাস করে।</p>
+                <h3 class="text-xl font-bold mb-3">AI Researcher</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Working on V2S-AI (Vision-to-Scent) and Privacy-Preserving Computer Vision for Edge Devices.</p>
+            </div>
+
+            <div class="glass p-8 rounded-3xl card-hover" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-purple-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-globe text-purple-500 text-2xl"></i>
                 </div>
+                <h3 class="text-xl font-bold mb-3">Full-Stack Dev</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Expertise in ASP.NET Core, SignalR, and WordPress development for global clients.</p>
+            </div>
+
+            <div class="glass p-8 rounded-3xl card-hover" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-cyan-500/10 w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-award text-cyan-500 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Award Winner</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Winner of SympSIST 2025 and Millennium Fellow Class of 2026.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-gray-800/50 px-4">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 border-l-4 border-blue-500 pl-4 uppercase tracking-wider">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Kotha-Bondhu</h3>
-                        <p class="text-gray-400 mb-4">Voice-first mental health support for rural areas. Built for SympSIST 2026.</p>
-                        <span class="text-xs bg-blue-900 text-blue-200 px-2 py-1 rounded">Social Innovation</span>
-                        <span class="text-xs bg-gray-700 text-gray-200 px-2 py-1 rounded ml-2">SDG 3</span>
+    <section id="projects" class="py-24 bg-gray-900/50 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16" data-aos="fade-right">
+                <h2 class="text-4xl font-extrabold mb-4">Featured Projects</h2>
+                <div class="h-1 w-20 bg-blue-500 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="group relative glass rounded-3xl overflow-hidden border border-gray-800" data-aos="flip-left">
+                    <div class="p-8">
+                        <span class="text-blue-500 font-bold text-xs uppercase tracking-widest mb-4 block">Social Innovation</span>
+                        <h3 class="text-2xl font-bold mb-4">Kotha-Bondhu</h3>
+                        <p class="text-gray-400 mb-6">A voice-first mental health system for rural populations, breaking barriers of language and literacy.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-gray-800 rounded-md text-xs">AI Voice</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-md text-xs">SDG 3</span>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-700">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Shared Music Space</h3>
-                        <p class="text-gray-400 mb-4">Real-time synchronized music platform using ASP.NET Core & SignalR.</p>
-                        <span class="text-xs bg-blue-900 text-blue-200 px-2 py-1 rounded">SignalR</span>
-                        <span class="text-xs bg-gray-700 text-gray-200 px-2 py-1 rounded ml-2">C#</span>
+
+                <div class="group relative glass rounded-3xl overflow-hidden border border-gray-800" data-aos="flip-right">
+                    <div class="p-8">
+                        <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-4 block">Web Real-Time</span>
+                        <h3 class="text-2xl font-bold mb-4">Shared Music Space</h3>
+                        <p class="text-gray-400 mb-6">Synchronized music streaming platform built with ASP.NET Core and SignalR for sub-second latency.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-gray-800 rounded-md text-xs">SignalR</span>
+                            <span class="px-3 py-1 bg-gray-800 rounded-md text-xs">C#</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-10 text-center border-t border-gray-800">
-        <p class="text-gray-500">Contact: <a href="mailto:this.mainul@gmail.com" class="text-blue-400">this.mainul@gmail.com</a></p>
-        <p class="mt-4 text-sm">&copy; 2026 Md Mainul Islam (Moyeen). Built with passion and code.</p>
+    <footer class="py-12 border-t border-gray-800 text-center">
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://github.com/TMAn1An" class="text-gray-500 hover:text-white transition"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://linkedin.com/in/moyeenulislammollik" class="text-gray-500 hover:text-white transition"><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+        <p class="text-gray-600 text-sm uppercase tracking-widest font-bold">© 2026 Md Mainul Islam</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({ once: true });
+
+        // Typing Effect
+        new Typed('#typed', {
+            strings: ['Computer Scientist.', 'Full-Stack Developer.', 'Linux Enthusiast.', 'Social Innovator.'],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true
+        });
+    </script>
 </body>
 </html>
