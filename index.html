@@ -353,14 +353,13 @@
   /* The glowing animated line (Crosses over dot) */
   .timeline-progress {
     position: absolute; 
-    left: 19px; /* Centered exactly through the 16px dot */
+    left: 19px; 
     top: 0; 
     width: 2px; 
     background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
     height: 0%; 
     transition: height 0.15s ease-out;
-    z-index: 3; /* Sits ON TOP of everything */
-    box-shadow: 0 0 10px 2px var(--accent-cyan);
+    z-index: 3; 
   }
 
   .timeline-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-purple); margin-bottom: 8px; display: block; }
