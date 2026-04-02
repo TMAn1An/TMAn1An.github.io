@@ -156,11 +156,10 @@
     align-items: center;
     position: relative;
     padding-top: 80px;
-    /* Removed overflow: hidden here to prevent shadow clipping on the right */
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr; /* Adjusted for better spacing */
+    grid-template-columns: 1.2fr 0.8fr;
     gap: 40px;
     align-items: center;
     position: relative;
@@ -201,7 +200,7 @@
   .galaxy-wrapper {
     position: absolute;
     width: 100%;
-    max-width: 480px; /* Constrained to prevent right-side clipping */
+    max-width: 480px;
     aspect-ratio: 1;
     transform-style: preserve-3d;
     transform: rotateX(65deg) rotateY(-15deg);
@@ -306,41 +305,62 @@
   }
   .tag.highlight { border-color: rgba(247, 213, 112, 0.4); color: var(--accent-gold); }
 
-  /* --- Experience Timeline (Animated) --- */
+  /* --- Experience Timeline (Perfectly Centered Crossover) --- */
   .timeline { 
     position: relative; 
     max-width: 800px; 
     margin: 0 auto; 
-    padding-left: 10px; 
+    padding-left: 20px; /* Base offset for the whole system */
   }
-  /* The dull background line */
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; 
-    background: rgba(255, 255, 255, 0.05);
-  }
-  /* The glowing animated line controlled by JS */
-  .timeline-progress {
-    position: absolute; left: 0; top: 0; width: 2px; 
-    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
-    height: 0%; /* Will be updated via JS */
-    transition: height 0.15s ease-out;
-    z-index: 1;
-    box-shadow: 0 0 10px var(--accent-cyan);
-  }
-  .timeline-item { position: relative; padding-left: 40px; padding-bottom: 60px; }
   
-  /* The animated dot */
-  .timeline-item::before {
-    content: ''; position: absolute; left: -5px; top: 8px; width: 12px; height: 12px;
-    border-radius: 50%; background: var(--bg-main); border: 2px solid var(--border-color);
-    z-index: 2; transition: all 0.4s ease;
+  .timeline-item { 
+    position: relative; 
+    padding-left: 40px; 
+    padding-bottom: 60px; 
   }
-  /* When the item reveals, the dot lights up */
+  
+  /* The dot */
+  .timeline-item::before {
+    content: ''; 
+    position: absolute; 
+    /* Offset by half the width (-8px) + offset to align with 20px line */
+    left: -8px; 
+    top: 6px; 
+    width: 16px; 
+    height: 16px;
+    border-radius: 50%; 
+    background: var(--bg-main); 
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    z-index: 1; /* Dot sits below the lines */
+  }
   .timeline-item.active::before { 
-    background: var(--accent-cyan); 
     border-color: var(--accent-cyan); 
-    box-shadow: 0 0 15px 3px rgba(0, 229, 255, 0.6); 
-    transform: scale(1.2);
+    box-shadow: 0 0 15px 3px rgba(0, 229, 255, 0.4); 
+  }
+
+  /* The dull background line (Crosses over dot) */
+  .timeline-base-line {
+    position: absolute; 
+    left: 19px; /* Centered exactly through the 16px dot */
+    top: 0; 
+    bottom: 0; 
+    width: 2px; 
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 2; /* Sits ON TOP of the dot */
+  }
+
+  /* The glowing animated line (Crosses over dot) */
+  .timeline-progress {
+    position: absolute; 
+    left: 19px; /* Centered exactly through the 16px dot */
+    top: 0; 
+    width: 2px; 
+    background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+    height: 0%; 
+    transition: height 0.15s ease-out;
+    z-index: 3; /* Sits ON TOP of everything */
+    box-shadow: 0 0 10px 2px var(--accent-cyan);
   }
 
   .timeline-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-purple); margin-bottom: 8px; display: block; }
@@ -426,7 +446,7 @@
   /* Responsive */
   @media (max-width: 968px) {
     .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-visual { display: none; } /* Hide 3D element on small screens to save space */
+    .hero-visual { display: none; }
     .stats-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
@@ -576,8 +596,6 @@
       </div>
       
       <div class="timeline" id="experience-timeline">
-        <div class="timeline-progress" id="timeline-progress-line"></div>
-
         <div class="timeline-item reveal">
           <span class="timeline-date">Feb 2026 — Present</span>
           <h3 class="timeline-title">Vice Chair</h3>
@@ -608,6 +626,9 @@
             <li>Engaging with national ICT networks and mentoring peers on career development.</li>
           </ul>
         </div>
+
+        <div class="timeline-base-line"></div>
+        <div class="timeline-progress" id="timeline-progress-line"></div>
       </div>
     </div>
   </section>
@@ -726,7 +747,7 @@
       menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
     });
 
-    // Intersection Observer for Elements Fading In (Adds .active class)
+    // Intersection Observer for Elements Fading In
     const reveals = document.querySelectorAll('.reveal');
     const revealOptions = {
       threshold: 0.15,
@@ -736,7 +757,7 @@
     const revealOnScroll = new IntersectionObserver(function(entries, observer) {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('active'); // This triggers text fade AND the timeline dot glow
+        entry.target.classList.add('active'); 
         observer.unobserve(entry.target);
       });
     }, revealOptions);
@@ -755,15 +776,13 @@
       const rect = timeline.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       
-      // Calculate how much of the timeline is past the middle of the screen
       const triggerPoint = windowHeight / 2;
       
       if (rect.top > triggerPoint) {
-        timelineLine.style.height = '0%'; // Hasn't reached center yet
+        timelineLine.style.height = '0%';
       } else if (rect.bottom < triggerPoint) {
-        timelineLine.style.height = '100%'; // Fully passed center
+        timelineLine.style.height = '100%';
       } else {
-        // Calculate dynamic percentage
         const progress = (triggerPoint - rect.top) / rect.height;
         timelineLine.style.height = `${progress * 100}%`;
       }
